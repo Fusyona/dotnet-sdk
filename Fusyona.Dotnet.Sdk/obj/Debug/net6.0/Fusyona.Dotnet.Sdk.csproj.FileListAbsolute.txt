@@ -1,0 +1,12 @@
+/home/roly/Desktop/ROLY/Fusyona/Projects/Fusyona_Dotnet_SDK/dotnet-sdk/Fusyona.Dotnet.Sdk/bin/Debug/net6.0/Fusyona.Dotnet.Sdk.deps.json
+/home/roly/Desktop/ROLY/Fusyona/Projects/Fusyona_Dotnet_SDK/dotnet-sdk/Fusyona.Dotnet.Sdk/bin/Debug/net6.0/Fusyona.Dotnet.Sdk.dll
+/home/roly/Desktop/ROLY/Fusyona/Projects/Fusyona_Dotnet_SDK/dotnet-sdk/Fusyona.Dotnet.Sdk/bin/Debug/net6.0/Fusyona.Dotnet.Sdk.pdb
+/home/roly/Desktop/ROLY/Fusyona/Projects/Fusyona_Dotnet_SDK/dotnet-sdk/Fusyona.Dotnet.Sdk/obj/Debug/net6.0/Fusyona.Dotnet.Sdk.csproj.AssemblyReference.cache
+/home/roly/Desktop/ROLY/Fusyona/Projects/Fusyona_Dotnet_SDK/dotnet-sdk/Fusyona.Dotnet.Sdk/obj/Debug/net6.0/Fusyona.Dotnet.Sdk.GeneratedMSBuildEditorConfig.editorconfig
+/home/roly/Desktop/ROLY/Fusyona/Projects/Fusyona_Dotnet_SDK/dotnet-sdk/Fusyona.Dotnet.Sdk/obj/Debug/net6.0/Fusyona.Dotnet.Sdk.AssemblyInfoInputs.cache
+/home/roly/Desktop/ROLY/Fusyona/Projects/Fusyona_Dotnet_SDK/dotnet-sdk/Fusyona.Dotnet.Sdk/obj/Debug/net6.0/Fusyona.Dotnet.Sdk.AssemblyInfo.cs
+/home/roly/Desktop/ROLY/Fusyona/Projects/Fusyona_Dotnet_SDK/dotnet-sdk/Fusyona.Dotnet.Sdk/obj/Debug/net6.0/Fusyona.Dotnet.Sdk.csproj.CoreCompileInputs.cache
+/home/roly/Desktop/ROLY/Fusyona/Projects/Fusyona_Dotnet_SDK/dotnet-sdk/Fusyona.Dotnet.Sdk/obj/Debug/net6.0/Fusyona.Dotnet.Sdk.dll
+/home/roly/Desktop/ROLY/Fusyona/Projects/Fusyona_Dotnet_SDK/dotnet-sdk/Fusyona.Dotnet.Sdk/obj/Debug/net6.0/refint/Fusyona.Dotnet.Sdk.dll
+/home/roly/Desktop/ROLY/Fusyona/Projects/Fusyona_Dotnet_SDK/dotnet-sdk/Fusyona.Dotnet.Sdk/obj/Debug/net6.0/Fusyona.Dotnet.Sdk.pdb
+/home/roly/Desktop/ROLY/Fusyona/Projects/Fusyona_Dotnet_SDK/dotnet-sdk/Fusyona.Dotnet.Sdk/obj/Debug/net6.0/ref/Fusyona.Dotnet.Sdk.dll

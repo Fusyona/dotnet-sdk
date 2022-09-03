@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fusyona.Dotnet.Sdk", "Fusyona.Dotnet.Sdk\Fusyona.Dotnet.Sdk.csproj", "{ECB981A2-5BB0-4762-8D59-D9FE9B858F52}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fusyona.Dotnet.TestingConsoleApp", "Fusyona.Dotnet.TestingConsoleApp\Fusyona.Dotnet.TestingConsoleApp.csproj", "{1BF925E7-7607-4445-9D8D-588239C82722}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fusyona.Dotnet.Sdk.Tests", "Fusyona.Dotnet.Sdk.Tests\Fusyona.Dotnet.Sdk.Tests.csproj", "{E83501DB-6234-455D-8AA0-EE9B7CC03221}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{ECB981A2-5BB0-4762-8D59-D9FE9B858F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECB981A2-5BB0-4762-8D59-D9FE9B858F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECB981A2-5BB0-4762-8D59-D9FE9B858F52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BF925E7-7607-4445-9D8D-588239C82722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BF925E7-7607-4445-9D8D-588239C82722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BF925E7-7607-4445-9D8D-588239C82722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BF925E7-7607-4445-9D8D-588239C82722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E83501DB-6234-455D-8AA0-EE9B7CC03221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E83501DB-6234-455D-8AA0-EE9B7CC03221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E83501DB-6234-455D-8AA0-EE9B7CC03221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E83501DB-6234-455D-8AA0-EE9B7CC03221}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
