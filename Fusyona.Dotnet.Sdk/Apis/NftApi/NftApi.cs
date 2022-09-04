@@ -154,7 +154,7 @@ public class NftApi : INftApi
         return nfts;
     }
 
-    public async Task<NftPostDto> MintNft(string bearerToken, NftPostDto nftDto)
+    public async Task<NftPostDto> MintNft(string bearerToken, string collectionId, NftPostDto nftDto)
     {
         throw new NotImplementedException();
     }

@@ -5,7 +5,7 @@ namespace Fusyona.Dotnet.Sdk.Apis;
 
 public interface INftApi
 {
-    Task<NftPostDto> MintNft(string bearerToken, NftPostDto nftDto);
+    Task<NftPostDto> MintNft(string bearerToken, string collectionId, NftPostDto nftDto);
     Task<Nft> GetNft(string bearerToken, string collectionId, string nftId);
     Task<IEnumerable<Nft>> GetNfts(string bearerToken, string collectionId);
     Task<IEnumerable<Nft>> GetNftsWithPagination(string bearerToken, string collectionId, int page);
