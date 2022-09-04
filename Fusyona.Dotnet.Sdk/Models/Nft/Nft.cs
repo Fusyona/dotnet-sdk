@@ -208,7 +208,7 @@ public class Nft
     /// </summary>
     [DataMember(Name = "attachment", EmitDefaultValue = false)]
     [JsonProperty(PropertyName = "attachment")]
-    public CollectionCoverImage? Attachment { get; set; }
+    public NftAttachment? Attachment { get; set; }
 
     /// <summary>
     /// Get the string presentation of the object
@@ -217,7 +217,7 @@ public class Nft
     public override string ToString()
     {
         var sb = new StringBuilder();
-        sb.Append("class Nft{");
+        sb.Append("class nft{");
         sb.Append("  TokenId ").Append(TokenId).Append("\n");
         sb.Append("}");
 

@@ -168,7 +168,7 @@ public class Collection
 	public override string ToString()
 	{
 		var sb = new StringBuilder();
-		sb.Append("collection {");
+		sb.Append("class collection {");
 		sb.Append(" Id ").Append(Id).Append("\n");
 		sb.Append("}");
 

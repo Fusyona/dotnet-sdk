@@ -35,7 +35,7 @@ public class CollectionImage
 	public override string ToString()
 	{
 		var sb = new StringBuilder();
-		sb.Append("nft attachment {");
+		sb.Append("class collectionImage {");
 		sb.Append(" Id ").Append(Id).Append("\n");
 		sb.Append("}");
 

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace Fusyona.Dotnet.Sdk.Models;
 
 [DataContract]
-public class CollectionCoverImage
+public class NftAttachment
 {
     /// <summary>
 	/// The id of the NFT attachment
@@ -35,7 +35,7 @@ public class CollectionCoverImage
 	public override string ToString()
 	{
 		var sb = new StringBuilder();
-		sb.Append("nft attachment {");
+		sb.Append("class nftAttachment {");
 		sb.Append(" Id ").Append(Id).Append("\n");
 		sb.Append("}");
 
