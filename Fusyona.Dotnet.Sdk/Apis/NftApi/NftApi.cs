@@ -1,55 +1,160 @@
+using System.Net.Http.Headers;
 using Fusyona.Dotnet.Sdk.Dtos;
 using Fusyona.Dotnet.Sdk.Models;
+using Newtonsoft.Json;
 
 namespace Fusyona.Dotnet.Sdk.Apis;
 
 public class NftApi : INftApi
 {
-    private readonly HttpClient client;
     private readonly string baseUrl;
-    
+    private readonly HttpClient client;
+
     public NftApi()
     {
-        client = new HttpClient();
         baseUrl = "https://nft-marketplace-api.azurewebsites.net/api/";
+        client = new HttpClient { BaseAddress = new Uri(baseUrl) };
     }
 
-    public Task<CollectionPostDto> CreateCollection(string bearerToken, CollectionPostDto collectionDto)
+    public async Task<CollectionPostDto> CreateCollection(string bearerToken, CollectionPostDto collectionDto)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Collection> GetCollection(string collectionId)
+    public async Task<Collection> GetCollection(string bearerToken, string collectionId)
     {
-        throw new NotImplementedException();
+        Collection? collection = new Collection();
+        var request = new HttpRequestMessage(HttpMethod.Get, baseUrl + $"collections/{collectionId}");
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+
+        HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            var apiString = await response.Content.ReadAsStringAsync();
+            collection = JsonConvert.DeserializeObject<Collection>(apiString);
+        }
+
+        if (collection is null)
+            return new Collection();
+
+        return collection;
     }
 
-    public Task<IEnumerable<Collection>> GetCollections()
+    public async Task<IEnumerable<Collection>> GetCollections(string bearerToken)
     {
-        throw new NotImplementedException();
+        List<Collection>? collections = new List<Collection>();
+        var request = new HttpRequestMessage(HttpMethod.Get, baseUrl + "collections");
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+
+        HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            var apiString = await response.Content.ReadAsStringAsync();
+            collections = JsonConvert.DeserializeObject<List<Collection>>(apiString);
+        }
+
+        if (collections is null)
+            return new List<Collection>();
+
+        return collections;
     }
 
-    public Task<IEnumerable<Collection>> GetCollectionsWithPagination(int page)
+    public async Task<IEnumerable<Collection>> GetCollectionsWithPagination(string bearerToken, int page)
     {
-        throw new NotImplementedException();
+        List<Collection>? collections = new List<Collection>();
+        var request = new HttpRequestMessage(HttpMethod.Get, baseUrl + $"collections/pages/{page}");
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+
+        HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            var apiString = await response.Content.ReadAsStringAsync();
+            collections = JsonConvert.DeserializeObject<List<Collection>>(apiString);
+        }
+
+        if (collections is null)
+            return new List<Collection>();
+
+        return collections;
     }
 
-    public Task<Nft> GetNft(string nftId)
+    public async Task<IEnumerable<Nft>> GetGiftsWithPagination(string bearerToken, string collectionId, int page)
     {
-        throw new NotImplementedException();
+        List<Nft>? nfts = new List<Nft>();
+        var request = new HttpRequestMessage(HttpMethod.Get, baseUrl + $"collections/{collectionId}/gifts/pages/{page}");
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+
+        HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            var apiString = await response.Content.ReadAsStringAsync();
+            nfts = JsonConvert.DeserializeObject<List<Nft>>(apiString);
+        }
+
+        if (nfts is null)
+            return new List<Nft>();
+
+        return nfts;
     }
 
-    public Task<IEnumerable<Nft>> GetNfts()
+    public async Task<Nft> GetNft(string bearerToken, string collectionId, string nftId)
     {
-        throw new NotImplementedException();
+        Nft? nft = new Nft();
+        var request = new HttpRequestMessage(HttpMethod.Get, baseUrl + $"collections/{collectionId}/tokens/{nftId}");
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+
+        HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            var apiString = await response.Content.ReadAsStringAsync();
+            nft = JsonConvert.DeserializeObject<Nft>(apiString);
+        }
+
+        if (nft is null)
+            return new Nft();
+
+        return nft;
     }
 
-    public Task<IEnumerable<Nft>> GetNftsWithPagination(int page)
+    public async Task<IEnumerable<Nft>> GetNfts(string bearerToken, string collectionId)
     {
-        throw new NotImplementedException();
+        List<Nft>? nfts = new List<Nft>();
+        var request = new HttpRequestMessage(HttpMethod.Get, baseUrl + $"collections/{collectionId}/tokens");
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+
+        HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            var apiString = await response.Content.ReadAsStringAsync();
+            nfts = JsonConvert.DeserializeObject<List<Nft>>(apiString);
+        }
+
+        if (nfts is null)
+            return new List<Nft>();
+
+        return nfts;
     }
 
-    public Task<NftPostDto> MintNft(string bearerToken, NftPostDto nftDto)
+    public async Task<IEnumerable<Nft>> GetNftsWithPagination(string bearerToken, string collectionId, int page)
+    {
+        List<Nft>? nfts = new List<Nft>();
+        var request = new HttpRequestMessage(HttpMethod.Get, baseUrl + $"collections/{collectionId}/tokens/pages/{page}");
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+
+        HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            var apiString = await response.Content.ReadAsStringAsync();
+            nfts = JsonConvert.DeserializeObject<List<Nft>>(apiString);
+        }
+
+        if (nfts is null)
+            return new List<Nft>();
+
+        return nfts;
+    }
+
+    public async Task<NftPostDto> MintNft(string bearerToken, NftPostDto nftDto)
     {
         throw new NotImplementedException();
     }
