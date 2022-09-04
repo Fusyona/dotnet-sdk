@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Wg+nrNcHTm1LtFNid/m5Vf+X34haFvUaP9PvObk6IDU7QxvhwX62Jl46r5Cok1yUdxs0lc36c77DvI7bTv0WQw==",
+  "dgSpecHash": "OH3gMN3ZcSqMXwaVWGotyAuGqxtDCJcfBF+G9iB/mhYisMescUEzS6ACqMhpFFQHqefl1Pz5jCN2yJ73flnjZg==",
   "success": true,
   "projectFilePath": "/home/roly/Desktop/ROLY/Fusyona/Projects/Fusyona_Dotnet_SDK/dotnet-sdk/Fusyona.Dotnet.TestingConsoleApp/Fusyona.Dotnet.TestingConsoleApp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/roly/.nuget/packages/microsoft.identity.client/4.46.2/microsoft.identity.client.4.46.2.nupkg.sha512",
+    "/home/roly/.nuget/packages/microsoft.identitymodel.abstractions/6.22.0/microsoft.identitymodel.abstractions.6.22.0.nupkg.sha512"
+  ],
   "logs": []
 }

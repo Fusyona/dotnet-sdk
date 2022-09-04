@@ -6,12 +6,12 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "Fusyona.Dotnet.Sdk/1.0.0": {
+      "Fusyona.Dotnet.TestingConsoleApp/1.0.0": {
         "dependencies": {
-          "Microsoft.Identity.Client": "4.46.2"
+          "Fusyona.Dotnet.Sdk": "1.0.0"
         },
         "runtime": {
-          "Fusyona.Dotnet.Sdk.dll": {}
+          "Fusyona.Dotnet.TestingConsoleApp.dll": {}
         }
       },
       "Microsoft.Identity.Client/4.46.2": {
@@ -32,11 +32,19 @@
             "fileVersion": "6.22.0.30727"
           }
         }
+      },
+      "Fusyona.Dotnet.Sdk/1.0.0": {
+        "dependencies": {
+          "Microsoft.Identity.Client": "4.46.2"
+        },
+        "runtime": {
+          "Fusyona.Dotnet.Sdk.dll": {}
+        }
       }
     }
   },
   "libraries": {
-    "Fusyona.Dotnet.Sdk/1.0.0": {
+    "Fusyona.Dotnet.TestingConsoleApp/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -54,6 +62,11 @@
       "sha512": "sha512-iI+9V+2ciCrbheeLjpmjcqCnhy+r6yCoEcid3nkoFWerHgjVuT6CPM4HODUTtUPe1uwks4wcnAujJ8u+IKogHQ==",
       "path": "microsoft.identitymodel.abstractions/6.22.0",
       "hashPath": "microsoft.identitymodel.abstractions.6.22.0.nupkg.sha512"
+    },
+    "Fusyona.Dotnet.Sdk/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

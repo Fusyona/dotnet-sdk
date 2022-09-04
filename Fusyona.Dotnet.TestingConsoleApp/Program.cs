@@ -1,2 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+using Fusyona.Dotnet.Sdk.Auth;
+
+string token = await AuthUtils.GetAccessTokenAsync();
+
+Console.WriteLine(token);
