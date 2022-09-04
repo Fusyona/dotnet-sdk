@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "7hdljtaeooUmneZh2ISyaldQgSydIyvRBq3ArjPFbprX19dOdGXtSdlqFryTGDOtSRatLH5Oq2Yh5+kQdvFUeQ==",
+  "dgSpecHash": "nPBohyZgf+yfuGIr5csRojiZ2YRgwg1J8+Waku71BPx9hyPF+VF4lkAY5+qC2FWXBvm+L4tMJ8s1cl0cnL8XiA==",
   "success": true,
   "projectFilePath": "/home/roly/Desktop/ROLY/Fusyona/Projects/Fusyona_Dotnet_SDK/dotnet-sdk/Fusyona.Dotnet.Sdk/Fusyona.Dotnet.Sdk.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/roly/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
