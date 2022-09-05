@@ -159,7 +159,7 @@ public class Collection
     /// </summary>
     [DataMember(Name = "transactionHash", EmitDefaultValue = false)]
     [JsonProperty(PropertyName = "transactionHash")]
-    public int? TransactionHash { get; set; }
+    public string? TransactionHash { get; set; }
 
     /// <summary>
 	/// Get the string presentation of the object

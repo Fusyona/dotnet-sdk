@@ -3,6 +3,7 @@ using Fusyona.Dotnet.Sdk.Models;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
 using System.Net.Http.Headers;
+using Newtonsoft.Json.Linq;
 
 namespace Fusyona.Dotnet.Sdk.Apis;
 
@@ -38,7 +39,7 @@ public class NftApi : INftApi
             var apiString = await response.Content.ReadAsStringAsync();
             collection = JsonConvert.DeserializeObject<Collection>(apiString);
         }
-
+        
         if (collection is null)
             return new Collection();
 
@@ -74,9 +75,11 @@ public class NftApi : INftApi
         if (response.StatusCode == System.Net.HttpStatusCode.OK)
         {
             var apiString = await response.Content.ReadAsStringAsync();
-            collections = JsonConvert.DeserializeObject<List<Collection>>(apiString);
+            var jo = JObject.Parse(apiString);
+            var data = jo["data"].ToString();
+            collections = JsonConvert.DeserializeObject<List<Collection>>(data);
         }
-
+        
         if (collections is null)
             return new List<Collection>();
 
@@ -93,7 +96,9 @@ public class NftApi : INftApi
         if (response.StatusCode == System.Net.HttpStatusCode.OK)
         {
             var apiString = await response.Content.ReadAsStringAsync();
-            nfts = JsonConvert.DeserializeObject<List<Nft>>(apiString);
+            var jo = JObject.Parse(apiString);
+            var data = jo["data"].ToString();
+            nfts = JsonConvert.DeserializeObject<List<Nft>>(data);
         }
 
         if (nfts is null)
@@ -112,7 +117,9 @@ public class NftApi : INftApi
         if (response.StatusCode == System.Net.HttpStatusCode.OK)
         {
             var apiString = await response.Content.ReadAsStringAsync();
-            nft = JsonConvert.DeserializeObject<Nft>(apiString);
+            var jo = JObject.Parse(apiString);
+            var data = jo["token"].ToString();
+            nft = JsonConvert.DeserializeObject<Nft>(data);
         }
 
         if (nft is null)
@@ -150,7 +157,9 @@ public class NftApi : INftApi
         if (response.StatusCode == System.Net.HttpStatusCode.OK)
         {
             var apiString = await response.Content.ReadAsStringAsync();
-            nfts = JsonConvert.DeserializeObject<List<Nft>>(apiString);
+            var jo = JObject.Parse(apiString);
+            var data = jo["data"].ToString();
+            nfts = JsonConvert.DeserializeObject<List<Nft>>(data);
         }
 
         if (nfts is null)

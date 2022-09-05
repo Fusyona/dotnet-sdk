@@ -173,35 +173,35 @@ public class Nft
     /// </summary>
     [DataMember(Name = "transactionHash", EmitDefaultValue = false)]
     [JsonProperty(PropertyName = "transactionHash")]
-    public int? TransactionHash { get; set; }
+    public string? TransactionHash { get; set; }
 
     /// <summary>
     /// The set url transaction hash of the NFT
     /// </summary>
     [DataMember(Name = "setUrlTransactionHash", EmitDefaultValue = false)]
     [JsonProperty(PropertyName = "setUrlTransactionHash")]
-    public int? SetUrlTransactionHash { get; set; }
+    public string? SetUrlTransactionHash { get; set; }
 
     /// <summary>
     /// The set royalties transaction hash of the NFT
     /// </summary>
     [DataMember(Name = "setRoyaltiesTransactionHash", EmitDefaultValue = false)]
     [JsonProperty(PropertyName = "setRoyaltiesTransactionHash")]
-    public int? SetRoyaltiesTransactionHash { get; set; }
+    public string? SetRoyaltiesTransactionHash { get; set; }
 
     /// <summary>
     /// The collection id of the NFT
     /// </summary>
     [DataMember(Name = "collectionId", EmitDefaultValue = false)]
     [JsonProperty(PropertyName = "collectionId")]
-    public int? CollectionId { get; set; }
+    public string? CollectionId { get; set; }
 
     /// <summary>
     /// The currency id of the NFT
     /// </summary>
     [DataMember(Name = "currencyId", EmitDefaultValue = false)]
     [JsonProperty(PropertyName = "currencyId")]
-    public int? CurrencyId { get; set; }
+    public string? CurrencyId { get; set; }
 
     /// <summary>
     /// The attachment of the NFT
