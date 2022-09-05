@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Microsoft.Identity.Client;
 using Fusyona.Dotnet.Sdk.Auth;
 
-string token = await AuthUtils.GetAccessTokenAsync();
+AuthenticationResult authenticationResult = await AuthUtils.GetAccessTokenAsync();
 
-Console.WriteLine(token);
+Console.WriteLine(authenticationResult.AccessToken);
