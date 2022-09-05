@@ -1,7 +1,8 @@
-using System.Net.Http.Headers;
 using Fusyona.Dotnet.Sdk.Dtos;
 using Fusyona.Dotnet.Sdk.Models;
 using Newtonsoft.Json;
+using System.Net.Http.Json;
+using System.Net.Http.Headers;
 
 namespace Fusyona.Dotnet.Sdk.Apis;
 
@@ -18,7 +19,11 @@ public class NftApi : INftApi
 
     public async Task<CollectionPostDto> CreateCollection(string bearerToken, CollectionPostDto collectionDto)
     {
-        throw new NotImplementedException();
+        HttpResponseMessage response = await client.PostAsJsonAsync("collections", collectionDto);
+        response.EnsureSuccessStatusCode();
+
+        // return the created resource.
+        return collectionDto;
     }
 
     public async Task<Collection> GetCollection(string bearerToken, string collectionId)
@@ -156,6 +161,10 @@ public class NftApi : INftApi
 
     public async Task<NftPostDto> MintNft(string bearerToken, string collectionId, NftPostDto nftDto)
     {
-        throw new NotImplementedException();
+        HttpResponseMessage response = await client.PostAsJsonAsync("collections", nftDto);
+        response.EnsureSuccessStatusCode();
+
+        // return the created resource.
+        return nftDto;
     }
 }
