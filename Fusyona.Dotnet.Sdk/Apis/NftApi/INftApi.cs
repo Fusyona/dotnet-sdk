@@ -9,7 +9,7 @@ public interface INftApi
     Task<Nft> GetNft(string bearerToken, string collectionId, string nftId);
     Task<IEnumerable<Nft>> GetNfts(string bearerToken, string collectionId);
     Task<IEnumerable<Nft>> GetNftsWithPagination(string bearerToken, string collectionId, int page);
-    Task<IEnumerable<Nft>> GetGiftsWithPagination(string bearerToken, string collectionId, int page);
+    Task<IEnumerable<Nft>> GetAllTokensListWithPagination(string bearerToken, int page);
     Task<CollectionPostDto> CreateCollection(string bearerToken, CollectionPostDto collectionDto);
     Task<Collection> GetCollection(string bearerToken, string collectionId);
     Task<IEnumerable<Collection>> GetCollections(string bearerToken);

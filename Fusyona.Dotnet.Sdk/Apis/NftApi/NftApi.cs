@@ -83,10 +83,10 @@ public class NftApi : INftApi
         return collections;
     }
 
-    public async Task<IEnumerable<Nft>> GetGiftsWithPagination(string bearerToken, string collectionId, int page)
+    public async Task<IEnumerable<Nft>> GetAllTokensListWithPagination(string bearerToken, int page)
     {
         List<Nft>? nfts = new List<Nft>();
-        var request = new HttpRequestMessage(HttpMethod.Get, baseUrl + $"collections/{collectionId}/gifts/pages/{page}");
+        var request = new HttpRequestMessage(HttpMethod.Get, baseUrl + $"tokens/pages/{page}");
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
 
         HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
