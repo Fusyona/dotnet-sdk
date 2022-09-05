@@ -12,7 +12,7 @@ public static class AuthUtils
     private static string AuthorityBase = $"https://{AzureADB2CHostname}/tfp/{Tenant}/";
     private static string Authority = $"{AuthorityBase}{PolicySignUpSignIn}";
     private static string TenantId = "f914162d-c0c3-490b-93d5-1d8cfe1a4799/B2C_1_SignUpIn";
-    private static readonly string[] Scopes = {"https://accounts.fusyona.com/api/ReadUserProfileAPI" };
+    private static readonly string[] Scopes = { "openid", "profile", "email", "https://accounts.fusyona.com/api/WriteUserProfileAPI", "https://accounts.fusyona.com/api/ReadUserProfileAPI"};
     public static async Task<AuthenticationResult> GetAccessTokenAsync()
     {
         var application = PublicClientApplicationBuilder.Create(ClientID)
