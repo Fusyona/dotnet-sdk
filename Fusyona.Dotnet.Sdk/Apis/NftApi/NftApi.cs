@@ -18,23 +18,46 @@ public class NftApi : INftApi
 
     public async Task<string> CreateCollection(string bearerToken, string blockchainNetwork, string name, string description, decimal royalties, string externalLink, string coverImagePath, string featuredImagePath, string logoImagePath)
     {
-        var filePath = @"C:\house.png";
-
         using (var multipartFormContent = new MultipartFormDataContent())
         {
-            //Add other fields
-            multipartFormContent.Add(new StringContent("123"), name: "UserId");
-            multipartFormContent.Add(new StringContent("Home insurance"), name: "Title");
+            //Add first fields
+            multipartFormContent.Add(new StringContent(blockchainNetwork), name: "blockchainNetwork");
+            multipartFormContent.Add(new StringContent(name), name: "name");
+            multipartFormContent.Add(new StringContent(description), name: "description");
+            multipartFormContent.Add(new StringContent(royalties.ToString()), name: "royalties");
+            multipartFormContent.Add(new StringContent(externalLink), name: "externalLink");
 
-            //Add the file
-            var fileStreamContent = new StreamContent(File.OpenRead(filePath));
-            fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("image/png");
-            multipartFormContent.Add(fileStreamContent, name: "file", fileName: "house.png");
+            //Add the images
+            var fileStreamContent1 = new StreamContent(File.OpenRead(coverImagePath));
+            fileStreamContent1.Headers.ContentType = new MediaTypeHeaderValue("image/png");
+            multipartFormContent.Add(fileStreamContent1, name: "coverImage", fileName: "coverImage");
+
+            var fileStreamContent2 = new StreamContent(File.OpenRead(featuredImagePath));
+            fileStreamContent2.Headers.ContentType = new MediaTypeHeaderValue("image/png");
+            multipartFormContent.Add(fileStreamContent2, name: "featuredImage", fileName: "coverImage");
+
+            var fileStreamContent3 = new StreamContent(File.OpenRead(logoImagePath));
+            fileStreamContent3.Headers.ContentType = new MediaTypeHeaderValue("image/png");
+            multipartFormContent.Add(fileStreamContent3, name: "logoImage", fileName: "coverImage");
+
+            //Add bearer token to a default client header
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
 
             //Send it
-            var response = await client.PostAsync("https://localhost:12345/files/", multipartFormContent);
+            var response = await client.PostAsync(baseUrl + "collections", multipartFormContent);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsStringAsync();
+            
+            //Getting the approvedLink
+            string apiString = await response.Content.ReadAsStringAsync();
+            var jo = JObject.Parse(apiString);
+            var approvedLink = jo["payment"]["value"]["approvedLink"].ToString();
+
+            //Approve the collection creation
+            var requestApproveLink = new HttpRequestMessage(HttpMethod.Post, approvedLink);
+            requestApproveLink.Headers.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+            var responseApproveLink = await client.SendAsync(requestApproveLink, HttpCompletionOption.ResponseHeadersRead);
+
+            return responseApproveLink.StatusCode.ToString();
         }
     }
 
@@ -181,23 +204,42 @@ public class NftApi : INftApi
 
     public async Task<string> MintNft(string bearerToken, string collectionId, string title, string description, string category, int supply, string tags, string attachmentPath, string attributes, string privacy, string externalLink, string codes)
     {
-        var filePath = @"C:\house.png";
-
         using (var multipartFormContent = new MultipartFormDataContent())
         {
-            //Add other fields
-            multipartFormContent.Add(new StringContent("123"), name: "UserId");
-            multipartFormContent.Add(new StringContent("Home insurance"), name: "Title");
+            //Add first fields
+            multipartFormContent.Add(new StringContent(title), name: "title");
+            multipartFormContent.Add(new StringContent(description), name: "description");
+            multipartFormContent.Add(new StringContent(category), name: "category");
+            multipartFormContent.Add(new StringContent(supply.ToString()), name: "supply");
+            multipartFormContent.Add(new StringContent(tags), name: "tags");
+            multipartFormContent.Add(new StringContent(attributes), name: "attributes");
+            multipartFormContent.Add(new StringContent(privacy), name: "privacy");
+            multipartFormContent.Add(new StringContent(externalLink), name: "externalLink");
+            multipartFormContent.Add(new StringContent(codes), name: "codes");
 
-            //Add the file
-            var fileStreamContent = new StreamContent(File.OpenRead(filePath));
-            fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("image/png");
-            multipartFormContent.Add(fileStreamContent, name: "file", fileName: "house.png");
+            //Add the attachment
+            var fileStreamContent1 = new StreamContent(File.OpenRead(attachmentPath));
+            fileStreamContent1.Headers.ContentType = new MediaTypeHeaderValue("image/png");
+            multipartFormContent.Add(fileStreamContent1, name: "attachment", fileName: "attachment");
+
+            //Add bearer token to a default client header
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
 
             //Send it
-            var response = await client.PostAsync("https://localhost:12345/files/", multipartFormContent);
+            var response = await client.PostAsync(baseUrl + "collections", multipartFormContent);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsStringAsync();
+            
+            //Getting the approvedLink
+            string apiString = await response.Content.ReadAsStringAsync();
+            var jo = JObject.Parse(apiString);
+            var approvedLink = jo["payment"]["value"]["approvedLink"].ToString();
+
+            //Approve the collection creation
+            var requestApproveLink = new HttpRequestMessage(HttpMethod.Post, approvedLink);
+            requestApproveLink.Headers.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+            var responseApproveLink = await client.SendAsync(requestApproveLink, HttpCompletionOption.ResponseHeadersRead);
+
+            return responseApproveLink.StatusCode.ToString();
         }
     }
 }
