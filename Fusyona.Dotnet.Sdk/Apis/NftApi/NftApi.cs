@@ -1,7 +1,5 @@
-using Fusyona.Dotnet.Sdk.Dtos;
 using Fusyona.Dotnet.Sdk.Models;
 using Newtonsoft.Json;
-using System.Net.Http.Json;
 using System.Net.Http.Headers;
 using Newtonsoft.Json.Linq;
 
@@ -18,13 +16,26 @@ public class NftApi : INftApi
         client = new HttpClient { BaseAddress = new Uri(baseUrl) };
     }
 
-    public async Task<CollectionPostDto> CreateCollection(string bearerToken, CollectionPostDto collectionDto)
+    public async Task<string> CreateCollection(string bearerToken, string blockchainNetwork, string name, string description, decimal royalties, string externalLink, string coverImagePath, string featuredImagePath, string logoImagePath)
     {
-        HttpResponseMessage response = await client.PostAsJsonAsync("collections", collectionDto);
-        response.EnsureSuccessStatusCode();
+        var filePath = @"C:\house.png";
 
-        // return the created resource.
-        return collectionDto;
+        using (var multipartFormContent = new MultipartFormDataContent())
+        {
+            //Add other fields
+            multipartFormContent.Add(new StringContent("123"), name: "UserId");
+            multipartFormContent.Add(new StringContent("Home insurance"), name: "Title");
+
+            //Add the file
+            var fileStreamContent = new StreamContent(File.OpenRead(filePath));
+            fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("image/png");
+            multipartFormContent.Add(fileStreamContent, name: "file", fileName: "house.png");
+
+            //Send it
+            var response = await client.PostAsync("https://localhost:12345/files/", multipartFormContent);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
     }
 
     public async Task<Collection> GetCollection(string bearerToken, string collectionId)
@@ -39,7 +50,7 @@ public class NftApi : INftApi
             var apiString = await response.Content.ReadAsStringAsync();
             collection = JsonConvert.DeserializeObject<Collection>(apiString);
         }
-        
+
         if (collection is null)
             return new Collection();
 
@@ -79,7 +90,7 @@ public class NftApi : INftApi
             var data = jo["data"].ToString();
             collections = JsonConvert.DeserializeObject<List<Collection>>(data);
         }
-        
+
         if (collections is null)
             return new List<Collection>();
 
@@ -168,12 +179,25 @@ public class NftApi : INftApi
         return nfts;
     }
 
-    public async Task<NftPostDto> MintNft(string bearerToken, string collectionId, NftPostDto nftDto)
+    public async Task<string> MintNft(string bearerToken, string collectionId, string title, string description, string category, int supply, string tags, string attachmentPath, string attributes, string privacy, string externalLink, string codes)
     {
-        HttpResponseMessage response = await client.PostAsJsonAsync("collections", nftDto);
-        response.EnsureSuccessStatusCode();
+        var filePath = @"C:\house.png";
 
-        // return the created resource.
-        return nftDto;
+        using (var multipartFormContent = new MultipartFormDataContent())
+        {
+            //Add other fields
+            multipartFormContent.Add(new StringContent("123"), name: "UserId");
+            multipartFormContent.Add(new StringContent("Home insurance"), name: "Title");
+
+            //Add the file
+            var fileStreamContent = new StreamContent(File.OpenRead(filePath));
+            fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("image/png");
+            multipartFormContent.Add(fileStreamContent, name: "file", fileName: "house.png");
+
+            //Send it
+            var response = await client.PostAsync("https://localhost:12345/files/", multipartFormContent);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
     }
 }
