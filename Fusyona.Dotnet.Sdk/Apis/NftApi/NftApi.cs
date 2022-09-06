@@ -210,6 +210,7 @@ public class NftApi : INftApi
             multipartFormContent.Add(new StringContent(title), name: "title");
             multipartFormContent.Add(new StringContent(description), name: "description");
             multipartFormContent.Add(new StringContent(category), name: "category");
+            multipartFormContent.Add(new StringContent(collectionId), name: "collectionId");
             multipartFormContent.Add(new StringContent(supply.ToString()), name: "supply");
             multipartFormContent.Add(new StringContent(tags), name: "tags");
             multipartFormContent.Add(new StringContent(attributes), name: "attributes");
@@ -226,7 +227,7 @@ public class NftApi : INftApi
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
 
             //Send it
-            var response = await client.PostAsync(baseUrl + "collections", multipartFormContent);
+            var response = await client.PostAsync(baseUrl + $"collections/{collectionId}/tokens", multipartFormContent);
             response.EnsureSuccessStatusCode();
             
             //Getting the approvedLink

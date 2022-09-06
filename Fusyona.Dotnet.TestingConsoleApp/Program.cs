@@ -7,6 +7,7 @@ string collectionId = "8237b947-18b0-470e-8358-4f79737feb55";
 string nftId = "d5224c66-dfad-4840-8404-6459a0cfdb77";
 NftApi api = new NftApi();
 
+//Testing collection creation
 string blockchainNetwork = "Polygon";
 string name = "CollectDotnet";
 string description = "Dotnet";
@@ -15,4 +16,19 @@ string externalLink = "www.fusyona.com";
 string path = "/home/roly/Pictures/Screenshots/a.png";    
 
 string result = await api.CreateCollection(bearerToken, blockchainNetwork: blockchainNetwork, name: name, description: description, royalties: royalties, externalLink: externalLink, coverImagePath: path, featuredImagePath: path, logoImagePath: path);
+Console.WriteLine(result);
+
+//Testing nft creation
+string title = "TokenSport";
+description = "DescriptTokenSport";
+string category = "sports";
+int supply = 5;
+string tags = "tags";
+path = "/home/roly/Pictures/Screenshots/a.png";    
+string attributes = "attributes";
+string privacy = "privacy";
+externalLink = "www.fusyona.net";
+string codes = "codes";
+
+result = await api.MintNft(bearerToken, collectionId, title: title, description: description, category: category, supply: supply, tags: tags, attachmentPath: path, attributes: attributes, privacy: privacy, externalLink: externalLink, codes: codes);
 Console.WriteLine(result);
