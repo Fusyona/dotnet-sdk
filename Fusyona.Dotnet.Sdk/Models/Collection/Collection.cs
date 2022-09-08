@@ -183,7 +183,4 @@ public class Collection
 	{
 		return JsonConvert.SerializeObject(this, Formatting.Indented);
 	}
-
 }
-        
-
