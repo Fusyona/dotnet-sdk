@@ -5,7 +5,7 @@ namespace Fusyona.Dotnet.Sdk.Apis.Wallet;
 
 public static class Wallet
 {
-    private static string baseUrl = "https://api.fusyona.com/wallet/v1/";
+    private static string baseUrl = "https://wallet-api-dev.azurewebsites.net/api/";
     private static readonly HttpClient client = new HttpClient();
 
     public static async Task<HttpResponseMessage> GetBalanceAsync(
