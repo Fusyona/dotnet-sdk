@@ -57,16 +57,16 @@ public static class Nft
     //     }
     // }
 
-    // public static async Task<Collection?> GetCollection(
-    //     string bearerToken, string subcriptionKey, string collectionId)
-    // { 
-    //     var response = await Common.Request<Collection>(
-    //         HttpMethod.Get, bearerToken, subcriptionKey, 
-    //         baseUrl + "collections/" + collectionId
-    //     );
+    public static async Task<Collection?> GetCollection(
+        string bearerToken, string subcriptionKey, string collectionId)
+    { 
+        var response = await Common.Request<Collection>(
+            HttpMethod.Get, bearerToken, subcriptionKey, 
+            baseUrl + "collections/" + collectionId
+        );
 
-    //     return response;
-    // }
+        return response;
+    }
 
     // public static async Task<IList<Collection>?> GetCollectionsListWithPagination(
     //     string bearerToken, string subcriptionKey, int page)
