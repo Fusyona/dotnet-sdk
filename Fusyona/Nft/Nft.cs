@@ -84,6 +84,20 @@ public static class Nft
         );
     }
 
+    public static async Task<SingleToken?> GetSingleToken(
+        string bearerToken, string subcriptionKey, 
+        string collectionId, string tokenId)
+    {
+        return await Common.Request<SingleToken>(
+            HttpMethod.Get, bearerToken, subcriptionKey, 
+            baseUrl + "collections/" + collectionId
+            + "/tokens/" + tokenId
+        );
+    }
+
+
+
+
     // public static async Task<IEnumerable<Nft>> GetAllTokensListWithPagination(string bearerToken, int page)
     // {
     //     List<Nft>? nfts = new List<Nft>();

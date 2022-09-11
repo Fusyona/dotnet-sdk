@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace Fusyona.Nft.Models;
 
 [DataContract]
-public class NftAttachment
+public class TokenAttachment
 {
     /// <summary>
 	/// The id of the NFT attachment

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace Fusyona.Nft.Models;
 
 [DataContract]
-public class Nft
+public class Token
 {
     /// <summary>
     /// The id of the NFT
@@ -208,7 +208,7 @@ public class Nft
     /// </summary>
     [DataMember(Name = "attachment", EmitDefaultValue = false)]
     [JsonProperty(PropertyName = "attachment")]
-    public NftAttachment? Attachment { get; set; }
+    public TokenAttachment? Attachment { get; set; }
 
     /// <summary>
     /// Get the string presentation of the object
@@ -216,12 +216,14 @@ public class Nft
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
-        var sb = new StringBuilder();
-        sb.Append("class nft{");
-        sb.Append("  TokenId ").Append(TokenId).Append("\n");
-        sb.Append("}");
+        // var sb = new StringBuilder();
+        // sb.Append("class nft{");
+        // sb.Append("  TokenId ").Append(TokenId).Append("\n");
+        // sb.Append("}");
 
-        return sb.ToString();
+        // return sb.ToString();
+
+        return this.ToJson();
     }
 
     /// <summary>
