@@ -15,7 +15,7 @@ public class UnitTest1
     {   
         string collectionId = "754ac980-38a9-4379-8774-51568260578d";
 
-        var collection = await Nft.GetCollection(bearerToken, subcriptionKey, collectionId);
+        var collection = await Nft.GetSingleCollection(bearerToken, subcriptionKey, collectionId);
 		
         Console.WriteLine(collection);
 	}
@@ -28,5 +28,13 @@ public class UnitTest1
         foreach (var collection in collections)
             Console.WriteLine(collection);
 	}
+    
+    [Fact]
+    public async void Test3()
+    {
+        var collections = await Nft.GetCollectionsList(bearerToken, subcriptionKey);
 
+        foreach (var collection in collections)
+            Console.WriteLine(collection);
+	}
 }

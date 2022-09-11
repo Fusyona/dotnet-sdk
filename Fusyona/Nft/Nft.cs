@@ -57,12 +57,21 @@ public static class Nft
     //     }
     // }
 
-    public static async Task<Collection?> GetCollection(
+    public static async Task<Collection?> GetSingleCollection(
         string bearerToken, string subcriptionKey, string collectionId)
     { 
         return await Common.Request<Collection>(
             HttpMethod.Get, bearerToken, subcriptionKey, 
             baseUrl + "collections/" + collectionId
+        );
+    }
+    
+    public static async Task<IList<Collection>?> GetCollectionsList(
+        string bearerToken, string subcriptionKey)
+    { 
+        return await Common.Request<List<Collection>>(
+            HttpMethod.Get, bearerToken, subcriptionKey, 
+            baseUrl + "collections/"
         );
     }
 
