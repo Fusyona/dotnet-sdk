@@ -60,24 +60,20 @@ public static class Nft
     public static async Task<Collection?> GetCollection(
         string bearerToken, string subcriptionKey, string collectionId)
     { 
-        var response = await Common.Request<Collection>(
+        return await Common.Request<Collection>(
             HttpMethod.Get, bearerToken, subcriptionKey, 
             baseUrl + "collections/" + collectionId
         );
-
-        return response;
     }
 
-    // public static async Task<IList<Collection>?> GetCollectionsListWithPagination(
-    //     string bearerToken, string subcriptionKey, int page)
-    // {
-    //     var response = await Common.Request<List<Collection>>(
-    //         HttpMethod.Get, bearerToken, subcriptionKey, 
-    //         baseUrl + "collections?page=" + page
-    //     );
-
-    //     return response;
-    // }
+    public static async Task<IList<Collection>?> GetCollectionsListWithPagination(
+        string bearerToken, string subcriptionKey, int page)
+    {
+        return await Common.Request<List<Collection>>(
+            HttpMethod.Get, bearerToken, subcriptionKey, 
+            baseUrl + "collections?page=" + page
+        );
+    }
 
     // public static async Task<IEnumerable<Nft>> GetAllTokensListWithPagination(string bearerToken, int page)
     // {
