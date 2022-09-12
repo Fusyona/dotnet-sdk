@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "c20db1e4-02e3-49a0-b5d6-5c54c2f09974",
+		"name": "Wallet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2689677"
+	},
+	"item": [
+		{
+			"name": "Get System Currencies",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmZ1c3lvbmEuY29tL2Y5MTQxNjJkLWMwYzMtNDkwYi05M2Q1LTFkOGNmZTFhNDc5OS92Mi4wLyIsImV4cCI6MTY2Mjc4NTI2NywibmJmIjoxNjYyNzgxNjY3LCJhdWQiOiI4N2FiZWQ5NC0yNWY0LTRmMmMtOWNmMi1kMjk4ODMyODlkM2EiLCJvaWQiOiI1YzZiM2I0Ni01MmMyLTRhMmUtYjg5Ni1hNGI0YTZiOGNmZWMiLCJzdWIiOiI1YzZiM2I0Ni01MmMyLTRhMmUtYjg5Ni1hNGI0YTZiOGNmZWMiLCJnaXZlbl9uYW1lIjoiQWRyaWFuIiwiZmFtaWx5X25hbWUiOiJDLiBMZW9uIiwiZW1haWxzIjpbImluZm9AZnVzeW9uYS5jb20iXSwidGZwIjoiQjJDXzFfU2lnblVwSW4iLCJub25jZSI6IjU3N2NmNjI3LWY4MDYtNDA2NC05NzM3LWM1NDEwODFkNGYwNiIsInNjcCI6IldyaXRlVXNlclByb2ZpbGVBUEkgUmVhZFVzZXJQcm9maWxlQVBJIiwiYXpwIjoiZWI5MzY3MDctNTkzZS00OWQzLTgwMjgtMTA3NjBkNWI5YjI5IiwidmVyIjoiMS4wIiwiaWF0IjoxNjYyNzgxNjY3fQ.ctDSwPXFDSNJx-Pz8Q7d1DeyqUf-8k1YJtHwrpyKn1w88K9CgFpfzLD_XpkhoBDgGBd34_CzuG0jMwLD8Wvg4FQZhL-hquZYJ0QCb_9jKUVT9HFjcsxI4q8EPkAs9dtslBWBZjwbsNf53jULywXUx9bbCBntfc-7JxYKnNypkbozDRMVI1deRQmSSMXpYV2q4csTiAvrs3vibPVjdjA-39n2LSHA1hsxnkY7sGkL0gUKmmOSWyVzycYFhp_mrOCdo5NqkAT8oD9TQDv99fbxE-ND950f3aOQy9_E-d6HaKS_nlf3DvV8y1SVhDOydBt3MXIZeJedWx806cdzC6l7EQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wallet-api-dev.azurewebsites.net/api/cryptocurrencies",
+					"protocol": "https",
+					"host": [
+						"wallet-api-dev",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"cryptocurrencies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Currency Balance",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmZ1c3lvbmEuY29tL2Y5MTQxNjJkLWMwYzMtNDkwYi05M2Q1LTFkOGNmZTFhNDc5OS92Mi4wLyIsImV4cCI6MTY0MzQxNjM0NCwibmJmIjoxNjQzNDEyNzQ0LCJhdWQiOiI4N2FiZWQ5NC0yNWY0LTRmMmMtOWNmMi1kMjk4ODMyODlkM2EiLCJvaWQiOiI1YzZiM2I0Ni01MmMyLTRhMmUtYjg5Ni1hNGI0YTZiOGNmZWMiLCJzdWIiOiI1YzZiM2I0Ni01MmMyLTRhMmUtYjg5Ni1hNGI0YTZiOGNmZWMiLCJnaXZlbl9uYW1lIjoiQWRyaWFuIiwiZmFtaWx5X25hbWUiOiJDLiBMZW9uIiwiZW1haWxzIjpbImluZm9AZnVzeW9uYS5jb20iXSwidGZwIjoiQjJDXzFfU2lnblVwSW4iLCJub25jZSI6ImRhMmE0ZDliLTFkOGYtNGQ4My04ZTc1LWVmNTBiMjgwNGI2NCIsInNjcCI6IldyaXRlVXNlclByb2ZpbGVBUEkgUmVhZFVzZXJQcm9maWxlQVBJIiwiYXpwIjoiZWI5MzY3MDctNTkzZS00OWQzLTgwMjgtMTA3NjBkNWI5YjI5IiwidmVyIjoiMS4wIiwiaWF0IjoxNjQzNDEyNzQ0fQ.B-JVQCbJMSXesdBzgBmRtwGlJPimGwt5-gUR2FIeychB3x1Z3inus-zkutTkRejWhUSORPBSEqXsfYrGxtvMd1PwwtjnGmdkFZAnq_B2aCrOrwMJwawzlfTGl8pFjt8Tz9EYeMqwvaDMIA0IjA930N_X1E8f3XvOo5PIyR1CxiiewSj2NgNShJRnmTFsJ-g3614-YYQEDFVEnQ_7F3SUDrOdQZBoW9gMxYln_OZkYBnJTGF_SH3pelDgBz72L7CTJoKoo297VqjF1S3JG41ZnGMT8W3jgLgH6G6AE5ipBAHFqffl3zqIqASR9aPlWGon8OaboMNXOeC3iE4FZ8ck1w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsifQ.eyJpc3MiOiJodHRwczovL2Jyb2tlcnN0LmIyY2xvZ2luLmNvbS9lYjk0MmM1Ny1lZTdhLTQ3MTAtOThhNy0zNWNiODZhMTc4MDUvdjIuMC8iLCJleHAiOjE2MjEwNTMzNTgsIm5iZiI6MTYyMTA1MTU1OCwiYXVkIjoiNTMzNTM3YzMtYTFjZi00MThiLTkxYzUtODRlZjhmOGEzODIxIiwib2lkIjoiMTdkYTk3YTItNmZkMy00YWIxLWFhMTItODczMDQxZjczZDhmIiwic3ViIjoiMTdkYTk3YTItNmZkMy00YWIxLWFhMTItODczMDQxZjczZDhmIiwiZ2l2ZW5fbmFtZSI6IkFkZHJpYW4iLCJuYW1lIjoidW5rbm93biIsImZhbWlseV9uYW1lIjoiQy4gTGVvbiIsImVtYWlscyI6WyJpbmZvQGJyb2tlcnN0LmNvbSJdLCJ0ZnAiOiJCMkNfMV9Ccm9rZXJzdFBvcnRhbF9TaWduSW4iLCJub25jZSI6ImFkZTAwNzcxLTI1YTktNDVjOS1iNDY4LWY5MjUwNzM1MGU1OCIsInNjcCI6IldyaXRlU29jaWFsQVBJIiwiYXpwIjoiM2Y2MTQ4OWEtM2YwZi00YTcxLTgyNDgtODIyNDc2NDA1MzQ0IiwidmVyIjoiMS4wIiwiaWF0IjoxNjIxMDUxNTU4fQ.h96yBlPtklHcGEOeLiFyzwiHjc2jRY6Tt3RKxDouQlZB-wE6z3Cjrl3iw2x-O4ZSdAS3Qsh8tXp8IMvth98tHXfduN2xmv6qB6dtQDQ1s1sp-MEj_F6bFD0-f_s9C_-bejxSOJIOWynCq6vQw1rS2IQ7LV9WOXGQZRhwEdzqgcVt9P7t6SoI8Kcg-l3ij38JyiA0CNhBwCfWs84Lq1gFCrddqVeJOE3CNuu8N5e8e7mnE2bOU0kj9IjS2OlhQuZmiZF3MzEry5GSoCOpMigPVJaiw6j3h2uDtEL1qBSceHvhyfsbWyzweQYjsh1HzpkwIAdrWK817SnVgX-xICVftg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://wallet-api-dev.azurewebsites.net/api/addresses/00847cfa-c61a-40dc-8b92-3fe67cded845/balance",
+					"protocol": "https",
+					"host": [
+						"wallet-api-dev",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"addresses",
+						"00847cfa-c61a-40dc-8b92-3fe67cded845",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Currency Fee",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsifQ.eyJpc3MiOiJodHRwczovL2Jyb2tlcnN0LmIyY2xvZ2luLmNvbS9lYjk0MmM1Ny1lZTdhLTQ3MTAtOThhNy0zNWNiODZhMTc4MDUvdjIuMC8iLCJleHAiOjE2MjEwNTMzNTgsIm5iZiI6MTYyMTA1MTU1OCwiYXVkIjoiNTMzNTM3YzMtYTFjZi00MThiLTkxYzUtODRlZjhmOGEzODIxIiwib2lkIjoiMTdkYTk3YTItNmZkMy00YWIxLWFhMTItODczMDQxZjczZDhmIiwic3ViIjoiMTdkYTk3YTItNmZkMy00YWIxLWFhMTItODczMDQxZjczZDhmIiwiZ2l2ZW5fbmFtZSI6IkFkZHJpYW4iLCJuYW1lIjoidW5rbm93biIsImZhbWlseV9uYW1lIjoiQy4gTGVvbiIsImVtYWlscyI6WyJpbmZvQGJyb2tlcnN0LmNvbSJdLCJ0ZnAiOiJCMkNfMV9Ccm9rZXJzdFBvcnRhbF9TaWduSW4iLCJub25jZSI6ImFkZTAwNzcxLTI1YTktNDVjOS1iNDY4LWY5MjUwNzM1MGU1OCIsInNjcCI6IldyaXRlU29jaWFsQVBJIiwiYXpwIjoiM2Y2MTQ4OWEtM2YwZi00YTcxLTgyNDgtODIyNDc2NDA1MzQ0IiwidmVyIjoiMS4wIiwiaWF0IjoxNjIxMDUxNTU4fQ.h96yBlPtklHcGEOeLiFyzwiHjc2jRY6Tt3RKxDouQlZB-wE6z3Cjrl3iw2x-O4ZSdAS3Qsh8tXp8IMvth98tHXfduN2xmv6qB6dtQDQ1s1sp-MEj_F6bFD0-f_s9C_-bejxSOJIOWynCq6vQw1rS2IQ7LV9WOXGQZRhwEdzqgcVt9P7t6SoI8Kcg-l3ij38JyiA0CNhBwCfWs84Lq1gFCrddqVeJOE3CNuu8N5e8e7mnE2bOU0kj9IjS2OlhQuZmiZF3MzEry5GSoCOpMigPVJaiw6j3h2uDtEL1qBSceHvhyfsbWyzweQYjsh1HzpkwIAdrWK817SnVgX-xICVftg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://wallet-api-dev.azurewebsites.net/api/cryptocurrencies/efc8a7fb-e8d2-434a-8aea-49a294571140/fees",
+					"protocol": "https",
+					"host": [
+						"wallet-api-dev",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"cryptocurrencies",
+						"efc8a7fb-e8d2-434a-8aea-49a294571140",
+						"fees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Full User Currencies",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmZ1c3lvbmEuY29tL2Y5MTQxNjJkLWMwYzMtNDkwYi05M2Q1LTFkOGNmZTFhNDc5OS92Mi4wLyIsImV4cCI6MTY2Mjc4NTI2NywibmJmIjoxNjYyNzgxNjY3LCJhdWQiOiI4N2FiZWQ5NC0yNWY0LTRmMmMtOWNmMi1kMjk4ODMyODlkM2EiLCJvaWQiOiI1YzZiM2I0Ni01MmMyLTRhMmUtYjg5Ni1hNGI0YTZiOGNmZWMiLCJzdWIiOiI1YzZiM2I0Ni01MmMyLTRhMmUtYjg5Ni1hNGI0YTZiOGNmZWMiLCJnaXZlbl9uYW1lIjoiQWRyaWFuIiwiZmFtaWx5X25hbWUiOiJDLiBMZW9uIiwiZW1haWxzIjpbImluZm9AZnVzeW9uYS5jb20iXSwidGZwIjoiQjJDXzFfU2lnblVwSW4iLCJub25jZSI6IjU3N2NmNjI3LWY4MDYtNDA2NC05NzM3LWM1NDEwODFkNGYwNiIsInNjcCI6IldyaXRlVXNlclByb2ZpbGVBUEkgUmVhZFVzZXJQcm9maWxlQVBJIiwiYXpwIjoiZWI5MzY3MDctNTkzZS00OWQzLTgwMjgtMTA3NjBkNWI5YjI5IiwidmVyIjoiMS4wIiwiaWF0IjoxNjYyNzgxNjY3fQ.ctDSwPXFDSNJx-Pz8Q7d1DeyqUf-8k1YJtHwrpyKn1w88K9CgFpfzLD_XpkhoBDgGBd34_CzuG0jMwLD8Wvg4FQZhL-hquZYJ0QCb_9jKUVT9HFjcsxI4q8EPkAs9dtslBWBZjwbsNf53jULywXUx9bbCBntfc-7JxYKnNypkbozDRMVI1deRQmSSMXpYV2q4csTiAvrs3vibPVjdjA-39n2LSHA1hsxnkY7sGkL0gUKmmOSWyVzycYFhp_mrOCdo5NqkAT8oD9TQDv99fbxE-ND950f3aOQy9_E-d6HaKS_nlf3DvV8y1SVhDOydBt3MXIZeJedWx806cdzC6l7EQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsifQ.eyJpc3MiOiJodHRwczovL2Jyb2tlcnN0LmIyY2xvZ2luLmNvbS9lYjk0MmM1Ny1lZTdhLTQ3MTAtOThhNy0zNWNiODZhMTc4MDUvdjIuMC8iLCJleHAiOjE2MjEwNTMzNTgsIm5iZiI6MTYyMTA1MTU1OCwiYXVkIjoiNTMzNTM3YzMtYTFjZi00MThiLTkxYzUtODRlZjhmOGEzODIxIiwib2lkIjoiMTdkYTk3YTItNmZkMy00YWIxLWFhMTItODczMDQxZjczZDhmIiwic3ViIjoiMTdkYTk3YTItNmZkMy00YWIxLWFhMTItODczMDQxZjczZDhmIiwiZ2l2ZW5fbmFtZSI6IkFkZHJpYW4iLCJuYW1lIjoidW5rbm93biIsImZhbWlseV9uYW1lIjoiQy4gTGVvbiIsImVtYWlscyI6WyJpbmZvQGJyb2tlcnN0LmNvbSJdLCJ0ZnAiOiJCMkNfMV9Ccm9rZXJzdFBvcnRhbF9TaWduSW4iLCJub25jZSI6ImFkZTAwNzcxLTI1YTktNDVjOS1iNDY4LWY5MjUwNzM1MGU1OCIsInNjcCI6IldyaXRlU29jaWFsQVBJIiwiYXpwIjoiM2Y2MTQ4OWEtM2YwZi00YTcxLTgyNDgtODIyNDc2NDA1MzQ0IiwidmVyIjoiMS4wIiwiaWF0IjoxNjIxMDUxNTU4fQ.h96yBlPtklHcGEOeLiFyzwiHjc2jRY6Tt3RKxDouQlZB-wE6z3Cjrl3iw2x-O4ZSdAS3Qsh8tXp8IMvth98tHXfduN2xmv6qB6dtQDQ1s1sp-MEj_F6bFD0-f_s9C_-bejxSOJIOWynCq6vQw1rS2IQ7LV9WOXGQZRhwEdzqgcVt9P7t6SoI8Kcg-l3ij38JyiA0CNhBwCfWs84Lq1gFCrddqVeJOE3CNuu8N5e8e7mnE2bOU0kj9IjS2OlhQuZmiZF3MzEry5GSoCOpMigPVJaiw6j3h2uDtEL1qBSceHvhyfsbWyzweQYjsh1HzpkwIAdrWK817SnVgX-xICVftg",
+						"type": "text"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "710e277524cc426baf6c8ef1eb930af5",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://wallet-api-dev.azurewebsites.net/api/fulladdresses",
+					"protocol": "https",
+					"host": [
+						"wallet-api-dev",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"fulladdresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmZ1c3lvbmEuY29tL2Y5MTQxNjJkLWMwYzMtNDkwYi05M2Q1LTFkOGNmZTFhNDc5OS92Mi4wLyIsImV4cCI6MTY1Mjc1ODA2OCwibmJmIjoxNjUyNzU0NDY4LCJhdWQiOiI4N2FiZWQ5NC0yNWY0LTRmMmMtOWNmMi1kMjk4ODMyODlkM2EiLCJvaWQiOiI1YzZiM2I0Ni01MmMyLTRhMmUtYjg5Ni1hNGI0YTZiOGNmZWMiLCJzdWIiOiI1YzZiM2I0Ni01MmMyLTRhMmUtYjg5Ni1hNGI0YTZiOGNmZWMiLCJnaXZlbl9uYW1lIjoiQWRyaWFuIiwiZmFtaWx5X25hbWUiOiJDLiBMZW9uIiwiZW1haWxzIjpbImluZm9AZnVzeW9uYS5jb20iXSwidGZwIjoiQjJDXzFfU2lnblVwSW4iLCJub25jZSI6ImY2ZjU3N2YxLWUwYWItNDY1MC1hNTUxLWIzMDRkZGZkOWQyZiIsInNjcCI6IldyaXRlVXNlclByb2ZpbGVBUEkgUmVhZFVzZXJQcm9maWxlQVBJIiwiYXpwIjoiZWI5MzY3MDctNTkzZS00OWQzLTgwMjgtMTA3NjBkNWI5YjI5IiwidmVyIjoiMS4wIiwiaWF0IjoxNjUyNzU0NDY4fQ.QEw4y9GyZOaJsbIDD0yujHdTHDng8-eF3v7OqrVGsWeRZfJbL3tARk-seRCnwYNKGiV64mBzF4-Rts2cdJADCJFI1JcInYW__HK2WFWHJAMu12YyAoHHInPooy_Y9kSnzmiGPVdKaEQz9aVKoOES_Kn0Ce0O28x7wIbJ1_xmeR5-drqfuN_Z9bxM-JBjmTdBaxTn4kwMrkHK1RsbAdoKeoS4PpUH_6mtRECLbnRUfaZ3PKgMlVmY6IVVWUyEzF2P4lNVbfFURUuBXxZ95AX-qnG8iA5V2MzGrmJ5H32qXnMbv_zm723IK54uQ6g1s0x0P5xh6BHMfy0V5IBV-Q_OQQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://wallet-api-dev.azurewebsites.net/api/addresses/efe5bb38-7665-4d1f-8ce7-80fcd92c31ad/transfer/0x9dF9655bCCaa362be84Badb1D0E7e01b412F3924/500000000000000000000",
+					"protocol": "https",
+					"host": [
+						"wallet-api-dev",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"addresses",
+						"efe5bb38-7665-4d1f-8ce7-80fcd92c31ad",
+						"transfer",
+						"0x9dF9655bCCaa362be84Badb1D0E7e01b412F3924",
+						"500000000000000000000"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
