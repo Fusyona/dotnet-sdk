@@ -88,24 +88,29 @@ public static class Nft
         );
     }
 
-    public static async Task<IEnumerable<Token>> GetAllTokensListWithPagination(string bearerToken, string subscriptionKey, int page)
-    {
-        List<Token> nfts = new List<Token>();
 
-        var response = await Common.Request(HttpMethod.Get, bearerToken, subscriptionKey, baseUrl + $"tokens/pages/{page}");
-        if (response.StatusCode == System.Net.HttpStatusCode.OK)
-        {
-            var apiString = await response.Content.ReadAsStringAsync();
-            var jo = JObject.Parse(apiString);
-            var data = jo["data"].ToString();
-            nfts = JsonConvert.DeserializeObject<List<Token>>(data);
-        }
 
-        if (nfts is null)
-            return new List<Token>();
 
-        return nfts;
-    }
+    // public static async Task<IEnumerable<Nft>> GetAllTokensListWithPagination(string bearerToken, int page)
+    // {
+    //     List<Nft>? nfts = new List<Nft>();
+    //     var request = new HttpRequestMessage(HttpMethod.Get, baseUrl + $"tokens/pages/{page}");
+    //     request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+
+    //     HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
+    //     if (response.StatusCode == System.Net.HttpStatusCode.OK)
+    //     {
+    //         var apiString = await response.Content.ReadAsStringAsync();
+    //         var jo = JObject.Parse(apiString);
+    //         var data = jo["data"].ToString();
+    //         nfts = JsonConvert.DeserializeObject<List<Nft>>(data);
+    //     }
+
+    //     if (nfts is null)
+    //         return new List<Nft>();
+
+    //     return nfts;
+    // }
 
     // public static async Task<Nft> GetNft(string bearerToken, string collectionId, string nftId)
     // {
