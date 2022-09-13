@@ -52,33 +52,42 @@ public class NftTests
     //     Console.WriteLine(collection);
     // }
 
+    // [Fact]
+    // public async void Test5()
+    // {
+    //     string collectionId = "0685f215-eeb7-43e5-9627-de0cb8ee37de";
+    //     string tokenId = "e120edea-8c67-40ff-a8e4-1465f1be7470";
+
+    //     string blockchainNetwork = "Polygon";
+    //     string name = "CollectDotnet";
+    //     string description = "Dotnet";
+    //     decimal royalties = 5;
+    //     string externalLink = "www.fusyona.com";
+    //     string path = "https://media.istockphoto.com/photos/server-configuration-command-lines-on-a-monitor-picture-id619051530";
+
+    //     //Download sample image
+    //     using (WebClient webClient = new WebClient())
+    //     {
+    //         webClient.DownloadFile(path, "image.png");
+    //     }
+
+    //     path = "image.png";
+
+    //     var response = await Nft.CreateCollection(
+    //         bearerToken, subcriptionKey, blockchainNetwork,
+    //         name, description, royalties, externalLink, path,
+    //         path, path
+    //     );
+
+    //     Console.WriteLine(response);
+    // }
+
     [Fact]
-    public async void Test5()
+    public async void Test6()
     {
-        string collectionId = "0685f215-eeb7-43e5-9627-de0cb8ee37de";
-        string tokenId = "e120edea-8c67-40ff-a8e4-1465f1be7470";
+        var nfts = await Nft.GetAllTokensListWithPagination(bearerToken, subcriptionKey, 1);
 
-        string blockchainNetwork = "Polygon";
-        string name = "CollectDotnet";
-        string description = "Dotnet";
-        decimal royalties = 5;
-        string externalLink = "www.fusyona.com";
-        string path = "https://media.istockphoto.com/photos/server-configuration-command-lines-on-a-monitor-picture-id619051530";
-
-        //Download sample image
-        using (WebClient webClient = new WebClient())
-        {
-            webClient.DownloadFile(path, "image.png");
-        }
-
-        path = "image.png";
-
-        var response = await Nft.CreateCollection(
-            bearerToken, subcriptionKey, blockchainNetwork,
-            name, description, royalties, externalLink, path,
-            path, path
-        );
-
-        Console.WriteLine(response);
+        foreach (var nft in nfts)
+            Console.WriteLine(nft);
     }
 }
