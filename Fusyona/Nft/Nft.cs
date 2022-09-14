@@ -30,11 +30,11 @@ public static class Nft
 
             var fileStreamContent2 = new StreamContent(File.OpenRead(featuredImagePath));
             fileStreamContent2.Headers.ContentType = new MediaTypeHeaderValue("image/png");
-            multipartFormContent.Add(fileStreamContent2, name: "featuredImage", fileName: "coverImage");
+            multipartFormContent.Add(fileStreamContent2, name: "featuredImage", fileName: "featuredImage");
 
             var fileStreamContent3 = new StreamContent(File.OpenRead(logoImagePath));
             fileStreamContent3.Headers.ContentType = new MediaTypeHeaderValue("image/png");
-            multipartFormContent.Add(fileStreamContent3, name: "logoImage", fileName: "coverImage");
+            multipartFormContent.Add(fileStreamContent3, name: "logoImage", fileName: "logoImage");
 
             //Send request
             var response = await Common.Request(HttpMethod.Post, bearerToken, subscriptionKey, baseUrl + "collections/", multipartFormContent);
@@ -88,129 +88,83 @@ public static class Nft
         );
     }
 
+    public static async Task<IEnumerable<Token>> GetAllTokensListWithPagination(string bearerToken, string subscriptionKey, int page)
+    {
+        List<Token> nfts = new List<Token>();
 
+        var response = await Common.Request(HttpMethod.Get, bearerToken, subscriptionKey, baseUrl + $"tokens/pages/{page}");
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            var apiString = await response.Content.ReadAsStringAsync();
+            var jo = JObject.Parse(apiString);
+            var data = jo["data"].ToString();
+            nfts = JsonConvert.DeserializeObject<List<Token>>(data);
+        }
 
+        if (nfts is null)
+            return new List<Token>();
 
-    // public static async Task<IEnumerable<Nft>> GetAllTokensListWithPagination(string bearerToken, int page)
-    // {
-    //     List<Nft>? nfts = new List<Nft>();
-    //     var request = new HttpRequestMessage(HttpMethod.Get, baseUrl + $"tokens/pages/{page}");
-    //     request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+        return nfts;
+    }
 
-    //     HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
-    //     if (response.StatusCode == System.Net.HttpStatusCode.OK)
-    //     {
-    //         var apiString = await response.Content.ReadAsStringAsync();
-    //         var jo = JObject.Parse(apiString);
-    //         var data = jo["data"].ToString();
-    //         nfts = JsonConvert.DeserializeObject<List<Nft>>(data);
-    //     }
+    public static async Task<IEnumerable<Token>?> GetTokensList(string bearerToken, string subscriptionKey, string collectionId)
+    {
+        return await Common.Request<IEnumerable<Token>>(HttpMethod.Get, bearerToken, subscriptionKey, 
+        baseUrl + $"collections/{collectionId}/tokens");
+    }
 
-    //     if (nfts is null)
-    //         return new List<Nft>();
+    public static async Task<IEnumerable<Token>> GetTokensListWithPagination(string bearerToken, string subscriptionKey, string collectionId, int page)
+    {
+        List<Token> nfts = new List<Token>();
 
-    //     return nfts;
-    // }
+        var response = await Common.Request(HttpMethod.Get, bearerToken, subscriptionKey, baseUrl + $"collections/{collectionId}/tokens/pages/{page}");
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            var apiString = await response.Content.ReadAsStringAsync();
+            var jo = JObject.Parse(apiString);
+            var data = jo["data"].ToString();
+            nfts = JsonConvert.DeserializeObject<List<Token>>(data);
+        }
 
-    // public static async Task<Nft> GetNft(string bearerToken, string collectionId, string nftId)
-    // {
-    //     Nft? nft = new Nft();
-    //     var request = new HttpRequestMessage(HttpMethod.Get, baseUrl + $"collections/{collectionId}/tokens/{nftId}");
-    //     request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+        if (nfts is null)
+            return new List<Token>();
 
-    //     HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
-    //     if (response.StatusCode == System.Net.HttpStatusCode.OK)
-    //     {
-    //         var apiString = await response.Content.ReadAsStringAsync();
-    //         var jo = JObject.Parse(apiString);
-    //         var data = jo["token"].ToString();
-    //         nft = JsonConvert.DeserializeObject<Nft>(data);
-    //     }
+        return nfts;
+    }
 
-    //     if (nft is null)
-    //         return new Nft();
+    public static async Task<string> MintToken(string bearerToken, string subscriptionKey, string collectionId, string title, string description, string category, int supply, string tags, string attachmentPath, string attributes, string privacy, string externalLink, string codes)
+    {
+        using (var multipartFormContent = new MultipartFormDataContent())
+        {
+            //Add first fields
+            multipartFormContent.Add(new StringContent(title), name: "title");
+            multipartFormContent.Add(new StringContent(description), name: "description");
+            multipartFormContent.Add(new StringContent(category), name: "category");
+            multipartFormContent.Add(new StringContent(collectionId), name: "collectionId");
+            multipartFormContent.Add(new StringContent(supply.ToString()), name: "supply");
+            multipartFormContent.Add(new StringContent(tags), name: "tags");
+            multipartFormContent.Add(new StringContent(attributes), name: "attributes");
+            multipartFormContent.Add(new StringContent(privacy), name: "privacy");
+            multipartFormContent.Add(new StringContent(externalLink), name: "externalLink");
+            multipartFormContent.Add(new StringContent(codes), name: "codes");
 
-    //     return nft;
-    // }
+            //Add the attachment
+            var fileStreamContent1 = new StreamContent(File.OpenRead(attachmentPath));
+            fileStreamContent1.Headers.ContentType = new MediaTypeHeaderValue("image/png");
+            multipartFormContent.Add(fileStreamContent1, name: "attachment", fileName: "attachment");
 
-    // public static async Task GetNfts(string bearerToken, string collectionId)
-    // {
-    //     var request = new HttpRequestMessage(HttpMethod.Get, baseUrl + $"collections/{collectionId}/tokens");
-    //     request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+            //Send it
+            var response = await Common.Request(HttpMethod.Post, bearerToken, subscriptionKey, baseUrl + $"collections/{collectionId}/tokens", multipartFormContent);
 
-    //     HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
-    //     if (response.StatusCode == System.Net.HttpStatusCode.OK)
-    //     {
-    //         var apiString = await response.Content.ReadAsStringAsync();
-    //         nfts = JsonConvert.DeserializeObject<List<Nft>>(apiString);
-    //     }
+            //Getting the approvedLink
+            string apiString = await response.Content.ReadAsStringAsync();
+            var jo = JObject.Parse(apiString);
+            var approvedLink = jo["payment"]["value"]["approvedLink"].ToString();
 
-    //     if (nfts is null)
-    //         return new List<Nft>();
+            //Approve the collection creation
+            var responseApproveLink = await Common.Request(HttpMethod.Post, bearerToken, subscriptionKey, approvedLink);
 
-    //     return nfts;
-    // }
-
-    // public static async Task GetNftsWithPagination(string bearerToken, string collectionId, int page)
-    // {
-    //     List<Nft>? nfts = new List<Nft>();
-    //     var request = new HttpRequestMessage(HttpMethod.Get, baseUrl + $"collections/{collectionId}/tokens/pages/{page}");
-    //     request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
-
-    //     HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
-    //     if (response.StatusCode == System.Net.HttpStatusCode.OK)
-    //     {
-    //         var apiString = await response.Content.ReadAsStringAsync();
-    //         var jo = JObject.Parse(apiString);
-    //         var data = jo["data"].ToString();
-    //         nfts = JsonConvert.DeserializeObject<List<Nft>>(data);
-    //     }
-
-    //     if (nfts is null)
-    //         return new List<Nft>();
-
-    //     return nfts;
-    // }
-
-    // public static async Task<string> MintNft(string bearerToken, string collectionId, string title, string description, string category, int supply, string tags, string attachmentPath, string attributes, string privacy, string externalLink, string codes)
-    // {
-    //     using (var multipartFormContent = new MultipartFormDataContent())
-    //     {
-    //         //Add first fields
-    //         multipartFormContent.Add(new StringContent(title), name: "title");
-    //         multipartFormContent.Add(new StringContent(description), name: "description");
-    //         multipartFormContent.Add(new StringContent(category), name: "category");
-    //         multipartFormContent.Add(new StringContent(collectionId), name: "collectionId");
-    //         multipartFormContent.Add(new StringContent(supply.ToString()), name: "supply");
-    //         multipartFormContent.Add(new StringContent(tags), name: "tags");
-    //         multipartFormContent.Add(new StringContent(attributes), name: "attributes");
-    //         multipartFormContent.Add(new StringContent(privacy), name: "privacy");
-    //         multipartFormContent.Add(new StringContent(externalLink), name: "externalLink");
-    //         multipartFormContent.Add(new StringContent(codes), name: "codes");
-
-    //         //Add the attachment
-    //         var fileStreamContent1 = new StreamContent(File.OpenRead(attachmentPath));
-    //         fileStreamContent1.Headers.ContentType = new MediaTypeHeaderValue("image/png");
-    //         multipartFormContent.Add(fileStreamContent1, name: "attachment", fileName: "attachment");
-
-    //         //Add bearer token to a default client header
-    //         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
-
-    //         //Send it
-    //         var response = await client.PostAsync(baseUrl + $"collections/{collectionId}/tokens", multipartFormContent);
-    //         response.EnsureSuccessStatusCode();
-            
-    //         //Getting the approvedLink
-    //         string apiString = await response.Content.ReadAsStringAsync();
-    //         var jo = JObject.Parse(apiString);
-    //         var approvedLink = jo["payment"]["value"]["approvedLink"].ToString();
-
-    //         //Approve the collection creation
-    //         var requestApproveLink = new HttpRequestMessage(HttpMethod.Post, approvedLink);
-    //         requestApproveLink.Headers.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
-    //         var responseApproveLink = await client.SendAsync(requestApproveLink, HttpCompletionOption.ResponseHeadersRead);
-
-    //         return responseApproveLink.StatusCode.ToString();
-    //     }
-    // }
+            return responseApproveLink.StatusCode.ToString();
+        }
+    }
 }
