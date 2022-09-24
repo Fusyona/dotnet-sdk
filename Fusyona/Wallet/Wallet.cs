@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using Fusyona.Utils;
 using Newtonsoft.Json.Linq;
-using Fusyona.Nft.Models;
 
 namespace Fusyona.Wallet;
 
